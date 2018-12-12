@@ -1,0 +1,127 @@
+$colors: (
+  primary: #1D3557,
+  secondary: #A8DADC,
+  paragraph: #457B9D,
+  background: #F1FAEE,
+  highlights:#E63946,
+  line-1: #cee65e,
+  line-2: #a4cbe8,
+  line-3: #b52f24,
+  line-5: #469951,
+  line-11: #8b3baa,
+  line-13: #548bc5,
+  line-14: #961c5b
+);
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+body {
+  background-color: color(background);
+  color: color(paragraph);
+  font-family: monospace;
+}
+
+h1 {
+  border-bottom: 4px double color(primary);
+  color: color(primary);
+  font-size: 60px;
+  margin: 20px auto 10px;
+  padding: 10px 0 20px;
+  text-align: center;
+}
+
+.table {
+  color: #333;
+  display: block;
+  font-size: 20px;
+  padding: 10px;
+
+  h2 {
+    color: color(primary);
+    font-size: 20px;
+    margin: 5px 0 10px;
+    padding: 5px 0;
+    text-transform: uppercase;
+  }
+
+  .connection {
+    border-bottom: 1px solid color(primary);
+    margin: 0;
+    padding: 5px 0;
+
+    &:first-of-type {
+      border-top: 1px solid color(primary);
+    }
+
+    div {
+      box-sizing: border-box;
+      color: color(primary);
+      display: inline-block;
+      text-align: left;
+    }
+
+    div:first-of-type {
+      width: 8%;
+    }
+
+    div:nth-of-type(2) {
+      width: 12%;
+    }
+
+    div:nth-of-type(3) {
+      width: 23%;
+    }
+
+    div:last-of-type {
+      width: 55%;
+    }
+
+    .diff {
+      color: color(highlights);
+      text-align: center;
+    }
+
+    .station {
+      font-size: 12px;
+      line-height: 12px;
+      vertical-align: middle;
+    }
+
+    .line {
+      border-radius: 3px;
+      background-color: color(primary);
+      color: #FFF;
+      margin-right: 2%;
+      text-align: center;
+    }
+
+    .line-1 {
+      background-color: color(line-1);
+    }
+
+    .line-2 {
+      background-color: color(line-2);
+    }
+
+    .line-3 {
+      background-color: color(line-3);
+    }
+
+    .line-5 {
+      background-color: color(line-5);
+    }
+
+    .line-11 {
+      background-color: color(line-11);
+    }
+
+    .line-13 {
+      background-color: color(line-13);
+    }
+
+    .line-14 {
+      background-color: color(line-14);
+    }
+  }
+}
