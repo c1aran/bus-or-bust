@@ -98,7 +98,7 @@ function showConnections(lines, flag) {
     lines.forEach(e => {
 
       let line = e.line;
-      let departureDate = new Date(e.departure.replace(" ", "T"));
+      let departureDate = new Date(e.departure.replace(" ", "T").concat("+01:00"));
       let departure = `${addZero(departureDate.getHours())}:${addZero(departureDate.getMinutes())}`;
       let diff = Math.floor((departureDate - dateNow) / 60000);
       let station = e.name;
@@ -125,7 +125,7 @@ function showConnections(lines, flag) {
     lines.forEach(e => {
 
       let line = e.line;
-      let departureDate = new Date(e.departure.replace(" ", "T"));
+      let departureDate = new Date(e.departure.replace(" ", "T").concat("+01:00"));
       let departure = `${addZero(departureDate.getHours())}:${addZero(departureDate.getMinutes())}`;
       let diff = Math.floor((departureDate - dateNow) / 60000);
       let station = e.name;
