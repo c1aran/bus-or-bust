@@ -1,8 +1,8 @@
 "use strict";
 
-var dateNow = new Date();
+const dateNow = new Date();
 
-var stations = {
+const stations = {
   metalli: "Zug,Metalli-Bahnhof",
   bahnhofsplatz: "Zug,Bahnhofsplatz",
   kolinplatz: "Zug,Kolinplatz",
@@ -43,8 +43,8 @@ function combineJson(metalli, bhplatz, schoenegg) {
 
   metalli.forEach(e => {
 
-    var connection = e.legs[0];
-    var line = connection.line;
+    let connection = e.legs[0];
+    let line = connection.line;
 
     if (typeof line !== "undefined" && line === "3" || line === "14") {
       goodLines.push(connection);
@@ -54,8 +54,8 @@ function combineJson(metalli, bhplatz, schoenegg) {
 
   bhplatz.forEach(e => {
 
-    var connection = e.legs[0];
-    var line = connection.line;
+    let connection = e.legs[0];
+    let line = connection.line;
 
     if (typeof line !== "undefined" && line === "5") {
       goodLines.push(connection);
@@ -67,8 +67,8 @@ function combineJson(metalli, bhplatz, schoenegg) {
 
   schoenegg.forEach(e => {
 
-    var connection = e.legs[0];
-    var line = connection.line;
+    let connection = e.legs[0];
+    let line = connection.line;
 
     if (typeof line !== "undefined" && line === "11") {
       goodLines.push(connection);
@@ -91,19 +91,17 @@ function combineJson(metalli, bhplatz, schoenegg) {
 
 function showConnections(lines, flag) {
 
-  var html = "";
-
   if (flag === 1) {
 
-    html = `<div class="table"><h2>Grabenstrasse 🙌</h2>`;
+    let html = `<div class="table"><h2>Grabenstrasse 🙌</h2>`;
 
     lines.forEach(e => {
 
-      var line = e.line;
-      var departureDate = new Date(e.departure);
-      var departure = `${addZero(departureDate.getHours())}:${addZero(departureDate.getMinutes())}`;
-      var diff = Math.floor((departureDate - dateNow) / 60000);
-      var station = e.name;
+      let line = e.line;
+      let departureDate = new Date(e.departure.replace(" ", "T"));
+      let departure = `${addZero(departureDate.getHours())}:${addZero(departureDate.getMinutes())}`;
+      let diff = Math.floor((departureDate - dateNow) / 60000);
+      let station = e.name;
 
       if (diff < 60) {
         html += `<div class="connection">`;
@@ -122,15 +120,15 @@ function showConnections(lines, flag) {
 
   } else if (flag === 0) {
 
-    html = `<div class="table"><h2>Ägeristrasse 🖕</h2>`;
+    let html = `<div class="table"><h2>Ägeristrasse 🖕</h2>`;
 
     lines.forEach(e => {
 
-      var line = e.line;
-      var departureDate = new Date(e.departure);
-      var departure = `${addZero(departureDate.getHours())}:${addZero(departureDate.getMinutes())}`;
-      var diff = Math.floor((departureDate - dateNow) / 60000);
-      var station = e.name;
+      let line = e.line;
+      let departureDate = new Date(e.departure.replace(" ", "T"));
+      let departure = `${addZero(departureDate.getHours())}:${addZero(departureDate.getMinutes())}`;
+      let diff = Math.floor((departureDate - dateNow) / 60000);
+      let station = e.name;
 
       if (diff < 60) {
         html += `<div class="connection">`;
@@ -153,9 +151,9 @@ function showConnections(lines, flag) {
 function calcTables() {
   Promise.all([getConnections(stations.metalli, stations.kolinplatz), getConnections(stations.bahnhofsplatz, stations.kolinplatz), getConnections(stations.metalli, stations.schoenegg)])
     .then(function(responses) {
-      var metalliConnections = responses[0].connections;
-      var bahnhofsplatzConnections = responses[1].connections;
-      var schoeneggConnections = responses[2].connections;
+      let metalliConnections = responses[0].connections;
+      let bahnhofsplatzConnections = responses[1].connections;
+      let schoeneggConnections = responses[2].connections;
       combineJson(metalliConnections, bahnhofsplatzConnections, schoeneggConnections);
     })
     .catch(function(error) {

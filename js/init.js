@@ -1,3 +1,3 @@
 "use strict";
 calcTables();
-window.setInterval(calcTables, 60000);
+//window.setInterval(calcTables, 60000);
