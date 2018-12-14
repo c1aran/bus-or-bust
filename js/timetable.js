@@ -16,6 +16,10 @@ function addZero(i) {
   return i;
 }
 
+function fixDateString(date) {
+  return date.replace(" ", "T").concat("+01:00");
+}
+
 function getConnections(from, to) {
   return new Promise(function(resolve, reject) {
     var requestURL = `https://fahrplan.search.ch/api/route.json?from=${from}&to=${to}&transportation_types=bus&num=6`;
@@ -77,11 +81,11 @@ function combineJson(metalli, bhplatz, schoenegg) {
   });
 
   goodLines.sort(function(a, b) {
-    return new Date(a.departure) - new Date(b.departure);
+    return new Date(fixDateString(a.departure)) - new Date(fixDateString(b.departure));
   });
 
   badLines.sort(function(a, b) {
-    return new Date(a.departure) - new Date(b.departure);
+    return new Date(fixDateString(a.departure)) - new Date(fixDateString(b.departure));
   });
 
   showConnections(goodLines, 1);
@@ -98,12 +102,12 @@ function showConnections(lines, flag) {
     lines.forEach(e => {
 
       let line = e.line;
-      let departureDate = new Date(e.departure.replace(" ", "T").concat("+01:00"));
+      let departureDate = new Date(fixDateString(e.departure));
       let departure = `${addZero(departureDate.getHours())}:${addZero(departureDate.getMinutes())}`;
       let diff = Math.floor((departureDate - dateNow) / 60000);
       let station = e.name;
 
-      if (diff < 60) {
+      if (diff <= 40) {
         html += `<div class="connection">`;
         html += `<div class="line line-${line}">${line}</div>`;
         html += `<div class="diff">${diff}'</div>`;
@@ -125,12 +129,12 @@ function showConnections(lines, flag) {
     lines.forEach(e => {
 
       let line = e.line;
-      let departureDate = new Date(e.departure.replace(" ", "T").concat("+01:00"));
+      let departureDate = new Date(fixDateString(e.departure));
       let departure = `${addZero(departureDate.getHours())}:${addZero(departureDate.getMinutes())}`;
       let diff = Math.floor((departureDate - dateNow) / 60000);
       let station = e.name;
 
-      if (diff < 60) {
+      if (diff <= 40) {
         html += `<div class="connection">`;
         html += `<div class="line line-${line}">${line}</div>`;
         html += `<div class="diff">${diff}'</div>`;
