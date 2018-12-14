@@ -46,7 +46,7 @@ function combineJson(metalli, bhplatz, schoenegg) {
 
   metalli.forEach(e => {
 
-    let connection = e['legs'][0]
+    let connection = e['legs'][0];
     let line = connection['line'];
 
     if (typeof line !== 'undefined' && line === "3" || line === "14") {
@@ -139,12 +139,12 @@ function showConnections(lines, flag) {
         html += `<div class="diff">${diff}'</div>`;
         html += `<div class="departure">${departure}</div>`;
         html += `<div class="station">${station}</div>`;
-        html += `</div>`
+        html += `</div>`;
       }
 
     });
 
-    html += '</div>'
+    html += '</div>';
 
     document.getElementById('badLines').innerHTML = html;
   }
