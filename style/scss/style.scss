@@ -78,7 +78,11 @@ main {
   font-size: 20px;
   padding: 10px;
 
-  
+  .no-connections {
+    color: color(paragraph);
+    font-size: 16px;
+    font-style: italic;
+  }
 
   .connection {
     border-bottom: 1px solid color(primary);

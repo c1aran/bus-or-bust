@@ -102,6 +102,7 @@ function showConnections(lines, flag) {
   if (flag === 1) {
 
     let html = `<div class="table">`;
+    let count = 0;
 
     lines.forEach(e => {
 
@@ -112,6 +113,7 @@ function showConnections(lines, flag) {
       let station = e.name;
 
       if (diff <= 40 && diff >= -1) {
+        count++;
         html += `<div class="connection">`;
         html += `<div class="line line-${line}">${line}</div>`;
         html += `<div class="diff">${diff}'</div>`;
@@ -122,17 +124,22 @@ function showConnections(lines, flag) {
 
     });
 
-    html += "</div>";
+    if (count > 0) {
+      html += "</div>";
+    } else {
+      html += "<span class='no-connections'>Keine Verbindungen in den nächsten 40&nbsp;Minuten.</span></div>";
+    }
+    
 
-    document.querySelector("#goodLines .loading-icon").remove();
+    document.getElementById("good-icon").remove();
     document.getElementById("goodLines").innerHTML += html;
 
   } else if (flag === 0) {
 
     let html = `<div class="table">`;
+    let count = 0;
 
     lines.forEach(e => {
-
       let line = e.line;
       let departureDate = new Date(fixDateString(e.departure));
       let departure = `${addZero(departureDate.getHours())}:${addZero(departureDate.getMinutes())}`;
@@ -140,6 +147,7 @@ function showConnections(lines, flag) {
       let station = e.name;
 
       if (diff <= 40 && diff >= -1) {
+        count++;
         html += `<div class="connection">`;
         html += `<div class="line line-${line}">${line}</div>`;
         html += `<div class="diff">${diff}'</div>`;
@@ -150,9 +158,13 @@ function showConnections(lines, flag) {
 
     });
 
-    html += "</div>";
+    if (count > 0) {
+      html += "</div>";
+    } else {
+      html += "<span class='no-connections'>Keine Verbindungen in den nächsten 40&nbsp;Minuten.</span></div>";
+    }
 
-    document.querySelector("#badLines .loading-icon").remove();
+    document.getElementById("bad-icon").remove();
     document.getElementById("badLines").innerHTML += html;
   }
 

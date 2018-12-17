@@ -48,6 +48,12 @@ main .loading-icon {
   padding: 10px;
 }
 
+.table .no-connections {
+  color: #457B9D;
+  font-size: 16px;
+  font-style: italic;
+}
+
 .table .connection {
   border-bottom: 1px solid #1D3557;
   margin: 0;
