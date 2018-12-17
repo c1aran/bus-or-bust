@@ -1,5 +1,9 @@
 "use strict";
 
+window.onload = function() {
+  calcTables();
+};
+
 const dateNow = new Date();
 
 const stations = {
@@ -97,7 +101,7 @@ function showConnections(lines, flag) {
 
   if (flag === 1) {
 
-    let html = `<div class="table"><h2>Grabenstrasse 🙌</h2>`;
+    let html = `<div class="table">`;
 
     lines.forEach(e => {
 
@@ -120,11 +124,12 @@ function showConnections(lines, flag) {
 
     html += "</div>";
 
-    document.getElementById("goodLines").innerHTML = html;
+    document.querySelector("#goodLines .loading-icon").remove();
+    document.getElementById("goodLines").innerHTML += html;
 
   } else if (flag === 0) {
 
-    let html = `<div class="table"><h2>Ägeristrasse 🖕</h2>`;
+    let html = `<div class="table">`;
 
     lines.forEach(e => {
 
@@ -147,7 +152,8 @@ function showConnections(lines, flag) {
 
     html += "</div>";
 
-    document.getElementById("badLines").innerHTML = html;
+    document.querySelector("#badLines .loading-icon").remove();
+    document.getElementById("badLines").innerHTML += html;
   }
 
 }
@@ -163,4 +169,4 @@ function calcTables() {
     .catch(function(error) {
       console.log(error);
     });
-};
+}

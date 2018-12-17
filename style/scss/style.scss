@@ -4,7 +4,7 @@ $colors: (
   primary: #1D3557,
   secondary: #A8DADC,
   paragraph: #457B9D,
-  background: #F1FAEE,
+  background: #F1F8FB,
   highlights:#E63946,
   line-1: #cee65e,
   line-2: #a4cbe8,
@@ -54,6 +54,22 @@ h1 {
 main {
   margin: 0 auto;
   min-height: 300px;
+
+  h2 {
+    color: color(primary);
+    font-size: 20px;
+    margin: 5px 10px;
+    padding: 5px 0;
+    text-transform: uppercase;
+  }
+
+  .loading-icon {
+    background-image: url('../../img/loading.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 30px;
+  }
+
 }
 
 .table {
@@ -62,13 +78,7 @@ main {
   font-size: 20px;
   padding: 10px;
 
-  h2 {
-    color: color(primary);
-    font-size: 20px;
-    margin: 5px 0 10px;
-    padding: 5px 0;
-    text-transform: uppercase;
-  }
+  
 
   .connection {
     border-bottom: 1px solid color(primary);
