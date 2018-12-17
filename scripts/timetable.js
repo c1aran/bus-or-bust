@@ -107,7 +107,7 @@ function showConnections(lines, flag) {
       let diff = Math.floor((departureDate - dateNow) / 60000);
       let station = e.name;
 
-      if (diff <= 40) {
+      if (diff <= 40 && diff >= -1) {
         html += `<div class="connection">`;
         html += `<div class="line line-${line}">${line}</div>`;
         html += `<div class="diff">${diff}'</div>`;
@@ -134,7 +134,7 @@ function showConnections(lines, flag) {
       let diff = Math.floor((departureDate - dateNow) / 60000);
       let station = e.name;
 
-      if (diff <= 40) {
+      if (diff <= 40 && diff >= -1) {
         html += `<div class="connection">`;
         html += `<div class="line line-${line}">${line}</div>`;
         html += `<div class="diff">${diff}'</div>`;
