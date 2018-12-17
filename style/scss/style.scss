@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 $colors: (
   primary: #1D3557,
   secondary: #A8DADC,
@@ -12,8 +14,17 @@ $colors: (
   line-13: #548bc5,
   line-14: #961c5b
 );
+
 @function color($color-name) {
   @return map-get($colors, $color-name);
+}
+
+$width: (
+  max: 600px
+);
+
+@function width($value) {
+  @return map-get($width, $value);
 }
 
 body {
@@ -22,13 +33,27 @@ body {
   font-family: monospace;
 }
 
+
+header, main, footer {
+  max-width: width(max);
+}
+
+header {
+  margin: 0 auto;
+}
+
 h1 {
   border-bottom: 4px double color(primary);
   color: color(primary);
   font-size: 60px;
-  margin: 20px auto 10px;
+  margin: 20px 10px 10px;
   padding: 10px 0 20px;
   text-align: center;
+}
+
+main {
+  margin: 0 auto;
+  min-height: 300px;
 }
 
 .table {
@@ -66,11 +91,11 @@ h1 {
     }
 
     div:nth-of-type(2) {
-      width: 12%;
+      width: 15%;
     }
 
     div:nth-of-type(3) {
-      width: 23%;
+      width: 20%;
     }
 
     div:last-of-type {
@@ -122,6 +147,23 @@ h1 {
 
     .line-14 {
       background-color: color(line-14);
+    }
+  }
+}
+
+footer {
+  margin: 20px auto;
+  padding: 10px;
+
+  .credits {
+    font-size: 20px;
+    text-align: center;
+
+    a {
+      color: color(paragraph);
+      &:hover {
+        color: color(secondary);
+      }
     }
   }
 }

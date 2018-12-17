@@ -4,13 +4,26 @@ body {
   font-family: monospace;
 }
 
+header, main, footer {
+  max-width: 600px;
+}
+
+header {
+  margin: 0 auto;
+}
+
 h1 {
   border-bottom: 4px double #1D3557;
   color: #1D3557;
   font-size: 60px;
-  margin: 20px auto 10px;
+  margin: 20px 10px 10px;
   padding: 10px 0 20px;
   text-align: center;
+}
+
+main {
+  margin: 0 auto;
+  min-height: 300px;
 }
 
 .table {
@@ -51,11 +64,11 @@ h1 {
 }
 
 .table .connection div:nth-of-type(2) {
-  width: 12%;
+  width: 15%;
 }
 
 .table .connection div:nth-of-type(3) {
-  width: 23%;
+  width: 20%;
 }
 
 .table .connection div:last-of-type {
@@ -107,5 +120,23 @@ h1 {
 
 .table .connection .line-14 {
   background-color: #961c5b;
+}
+
+footer {
+  margin: 20px auto;
+  padding: 10px;
+}
+
+footer .credits {
+  font-size: 20px;
+  text-align: center;
+}
+
+footer .credits a {
+  color: #457B9D;
+}
+
+footer .credits a:hover {
+  color: #A8DADC;
 }
 /*# sourceMappingURL=style.css.map */
