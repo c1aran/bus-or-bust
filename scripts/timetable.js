@@ -5,6 +5,7 @@ window.onload = function() {
 };
 
 const dateNow = new Date();
+const TimezoneOffset = dateNow.getTimezoneOffset();
 
 const stations = {
   metalli: "Zug,Metalli-Bahnhof",
@@ -21,7 +22,12 @@ function addZero(i) {
 }
 
 function fixDateString(date) {
-  return date.replace(" ", "T").concat("+01:00");
+  if (TimezoneOffset == -120) {
+    return date.replace(" ", "T").concat("+02:00");
+  } else {
+    return date.replace(" ", "T").concat("+01:00");
+  }
+  
 }
 
 function getConnections(from, to) {
